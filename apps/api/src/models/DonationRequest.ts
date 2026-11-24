@@ -1,0 +1,2 @@
+import mongoose,{Schema} from "mongoose";
+const schema=new Schema({donation:{type:Schema.Types.ObjectId,ref:"Donation",required:true,index:true},receiver:{type:Schema.Types.ObjectId,ref:"Organization",required:true},quantity:{type:Number,required:true,min:.1},message:{type:String,maxlength:500},status:{type:String,enum:["pending","approved","rejected","cancelled"],default:"pending"},demo:{type:Boolean,default:false}},{timestamps:true});schema.index({donation:1,receiver:1},{unique:true});export const DonationRequest=mongoose.model("DonationRequest",schema);
