@@ -1,0 +1,2 @@
+import mongoose,{Schema} from "mongoose";
+const schema=new Schema({name:{type:String,required:true,trim:true},type:{type:String,enum:["donor","receiver","both"],required:true},verified:{type:Boolean,default:false},categories:[String],storage:[String],capacityKg:{type:Number,default:0,min:0},location:{type:{type:String,enum:["Point"],default:"Point"},coordinates:{type:[Number],required:true}},user:{type:Schema.Types.ObjectId,ref:"User",required:true}},{timestamps:true});schema.index({location:"2dsphere"});export const Organization=mongoose.model("Organization",schema);
