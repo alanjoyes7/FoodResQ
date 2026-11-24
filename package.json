@@ -1,0 +1,17 @@
+{
+  "name": "foodresq",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm:dev --workspace @foodresq/api\" \"npm:dev --workspace @foodresq/web\"",
+    "build": "npm run build --workspace @foodresq/api && npm run build --workspace @foodresq/web",
+    "test": "npm run test --workspace @foodresq/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.7.3"
+  }
+}
